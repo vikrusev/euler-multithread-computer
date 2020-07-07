@@ -44,7 +44,7 @@ class PrinterConsole {
     }
 
     private void printElementsCalculated() {
-        writeToFileAndConsole("Did " + Config.NUMBER_OF_ELEMENTS + " iterations.");
+        writeToFileAndConsole("Did " + Config.NUMBER_OF_ELEMENTS + " elements.");
     }
 
     private void printTotalTime() {
