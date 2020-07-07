@@ -123,7 +123,7 @@ public class PartialSumComputer extends Thread {
      */
     private void printThreadRunningTime() {
         if (!QUIET_MODE_STATE) {
-            System.out.println("Thread " + threadNumber + " execution time was " + runtimeCalculator.getRuntimeInSeconds() + " " + "seconds.");
+            System.out.println("Thread " + (threadNumber + 1) + " execution time was " + runtimeCalculator.getRuntimeInSeconds() + " " + "seconds.");
         }
     }
 
@@ -137,13 +137,13 @@ public class PartialSumComputer extends Thread {
 
     private void printEndMessage() {
         if (!QUIET_MODE_STATE) {
-            System.out.println("Thread " + threadNumber + " finished.");
+            System.out.println("Thread " + (threadNumber + 1) + " finished.");
         }
     }
 
     private void printStartingMessage() {
         if (!QUIET_MODE_STATE) {
-            System.out.println("Thread " + threadNumber + " started.");
+            System.out.println("Thread " + (threadNumber + 1) + " started.");
         }
     }
 }
