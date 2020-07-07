@@ -112,8 +112,7 @@ public class PartialSumComputer extends Thread {
             partialSum = partialSum.add(computationalFunction(i, denominator));
 
             if (i > 0) {
-                denominator = denominator.divide(BigDecimal.valueOf(2 * i), NUMBER_OF_DIGITS, RoundingMode.HALF_EVEN);
-                denominator = denominator.divide(BigDecimal.valueOf(2 * i - 1), NUMBER_OF_DIGITS, RoundingMode.HALF_EVEN);
+                denominator = denominator.divide(BigDecimal.valueOf(2 * i * (2 * i - 1)), NUMBER_OF_DIGITS, RoundingMode.HALF_EVEN);
             }
         }
     }
