@@ -31,4 +31,4 @@ buildNumber.properties
 .mvn/timing.properties
 
 # user
-output.txt
+output*.txt
