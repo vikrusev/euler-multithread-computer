@@ -2,20 +2,15 @@ package com.viktorrusev.euler.number.console;
 
 import com.viktorrusev.euler.number.core.Config;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 
 import static com.viktorrusev.euler.number.console.EulerNumberComputerConsole.runtimeCalculator;
 import static com.viktorrusev.euler.number.console.EulerNumberComputerConsole.eulerNumberComputer;
 
 class PrinterConsole {
-    private final String PRINT_MESSAGE = "The value of the Euler's number is %s";
 
     void printSummary() {
-        printSeparator();
         printEulerNumber();
-        writeEulerNumberToFile();
 
         if (!Config.QUIET_MODE_STATE) {
             printSeparator();
@@ -24,36 +19,44 @@ class PrinterConsole {
             printElementsCalculated();
             printTotalTime();
         }
+
+        printDashedSeparator();
     }
 
     private void printSeparator() {
-        System.out.println();
+        writeToFileAndConsole("");
+    }
+
+    private void printDashedSeparator() {
+        writeToFileAndConsole("---------- ---------- ---------- ---------- ---------- ---------- ----------");
     }
 
     private void printDigitsPrinted() {
-        System.out.println("Printed " + Config.NUMBER_OF_DIGITS + " digits.");
+        writeToFileAndConsole("Printed " + Config.NUMBER_OF_DIGITS + " digits.");
     }
 
     private void printEulerNumber() {
-        System.out.println(String.format(PRINT_MESSAGE, eulerNumberComputer.getE()));
+        writeToFileAndConsole(String.format("The value of the Euler's number is %s", eulerNumberComputer.getE()));
     }
 
     private void printThreadsUsed() {
-        System.out.println("Used " + Config.NUMBER_OF_THREADS + " threads.");
+        writeToFileAndConsole("Used " + Config.NUMBER_OF_THREADS + " threads.");
     }
 
     private void printElementsCalculated() {
-        System.out.println("Did " + Config.NUMBER_OF_ELEMENTS + " iterations.");
+        writeToFileAndConsole("Did " + Config.NUMBER_OF_ELEMENTS + " iterations.");
     }
 
     private void printTotalTime() {
-        System.out.println("The total execution time was " + runtimeCalculator.getRuntimeInSeconds() + " seconds.");
+        writeToFileAndConsole("The total execution time was " + runtimeCalculator.getRuntimeInSeconds() + " seconds.");
     }
 
-    private void writeEulerNumberToFile() {
-        try (PrintWriter writer = new PrintWriter(Config.OUTPUT_FILE, "UTF-8")) {
-            writer.println(String.format(PRINT_MESSAGE, eulerNumberComputer.getE()));
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+    private void writeToFileAndConsole(String text) {
+        System.out.println(text);
+
+        try (PrintWriter writer = new PrintWriter(new FileOutputStream(new File(Config.OUTPUT_FILE),true))) {
+            writer.println(text);
+        } catch (FileNotFoundException e) {
             System.err.println("Could not create the output file.");
         }
     }
