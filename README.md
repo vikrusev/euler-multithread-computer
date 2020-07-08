@@ -20,7 +20,7 @@ This project computes the Euler's number ***e*** using multithreading.
 * the output (value of ***e***) is by default saved in output.txt in the cwd. 
 
 ## Statistics
-* Speed-up S<sub>p</sub> = T<sub>1</sub> / T<sub>2</sub>
+* Speed-up S<sub>p</sub> = T<sub>1</sub> / T<sub>p</sub>
 * Efficiency E<sub>p</sub> = S<sub>p</sub> / p
 
 ### Table
